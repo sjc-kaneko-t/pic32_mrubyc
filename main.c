@@ -11,7 +11,7 @@ static uint8_t memory_pool[MEMORY_SIZE];
 /*
                          Main application
  */
-static void c_ra0(mrb_vm *vm, mrb_value *v, int argc) {
+static void c_rb6(mrb_vm *vm, mrb_value *v, int argc) {
     SET_INT_RETURN(PORTBbits.RB6);
 }
 static void c_rb5(mrb_vm *vm, mrb_value *v, int argc) {
@@ -63,7 +63,7 @@ int main(void)
 
     mrbc_init(memory_pool, MEMORY_SIZE);
     mrbc_define_method(0, mrbc_class_object, "rb5", c_rb5);
-    mrbc_define_method(0, mrbc_class_object, "ra0", c_ra0);
+    mrbc_define_method(0, mrbc_class_object, "rb6", c_rb6);
     mrbc_define_method(0, mrbc_class_object, "rb4", c_rb4);
     mrbc_define_method(0, mrbc_class_object, "ra4", c_ra4);
     mrbc_define_method(0, mrbc_class_object, "pri", c_puts);
