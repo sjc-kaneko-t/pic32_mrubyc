@@ -53,6 +53,11 @@
 */
 void INTERRUPT_Initialize (void)
 {    
+    //    UERI: UART1 Error
+    //    Priority: 1
+    //    SubPriority: 0
+        IPC8bits.U1IP = 1;
+        IPC8bits.U1IS = 0;
 
     //  Enable the multi vector
     INTCONbits.MVEC = 1;

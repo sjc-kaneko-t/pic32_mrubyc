@@ -27,9 +27,24 @@ static void c_ra4(mrb_vm *vm, mrb_value *v, int argc) {
     PORTAbits.RA4 = set_value;
 }
 
+static void c_puts(mrb_vm *vm, mrb_value *v, int argc) {
+    char *mo = mrbc_string_cstr(&v[1]);
+    int i = 0;
+    while(i<mrbc_string_size(&v[1])){
+        UART1_Write(mo[i]);
+        i++;
+    }
+}
+
 
 int hal_write(int fd, const void *buf, int nbytes) {
-    return 0;
+    int i;
+    while (U1STAbits.TRMT == 0);
+    for (i = nbytes; i; --i) {
+        while (U1STAbits.TRMT == 0);
+        U1TXREG= *(char*) buf++;
+    }
+    return (nbytes);
 }
 
 int hal_flush(int fd) {
@@ -51,6 +66,7 @@ int main(void)
     mrbc_define_method(0, mrbc_class_object, "ra0", c_ra0);
     mrbc_define_method(0, mrbc_class_object, "rb4", c_rb4);
     mrbc_define_method(0, mrbc_class_object, "ra4", c_ra4);
+    mrbc_define_method(0, mrbc_class_object, "pri", c_puts);
     mrbc_create_task(sample1, 0);
     mrbc_run();
     return 1;
