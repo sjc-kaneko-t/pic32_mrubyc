@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?> 
 <project>                                  
-  <executable name="dist/default/production/pic32_led.X.production.elf">                 
+  <executable name="dist/default/debug/pic32_led.X.debug.elf">                 
     <memory name="program">                 
       <units>bytes</units>                 
       <length>263312</length>                 
-      <used>147264</used>                     
-      <free>116048</free>                     
+      <used>143852</used>                     
+      <free>119460</free>                     
     </memory>                              
     <memory name="data">              
       <units>bytes</units>                 
-      <length>65536</length>                 
-      <used>25436</used>                     
-      <free>40100</free>                     
+      <length>66048</length>                 
+      <used>26544</used>                     
+      <free>39504</free>                     
     </memory>                              
   </executable>                            
 </project>                                 

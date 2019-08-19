@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c src/alloc.c src/class.c src/console.c src/c_array.c src/c_hash.c src/c_math.c src/c_numeric.c src/c_range.c src/c_string.c src/global.c src/keyvalue.c src/load.c src/mrblib.c src/rrt0.c src/static.c src/symbol.c src/value.c src/vm.c main.c sample1.c delay.c mcc_generated_files/uart1.c
+SOURCEFILES_QUOTED_IF_SPACED=mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/uart1.c src/alloc.c src/class.c src/console.c src/c_array.c src/c_hash.c src/c_math.c src/c_numeric.c src/c_range.c src/c_string.c src/global.c src/keyvalue.c src/load.c src/mrblib.c src/rrt0.c src/static.c src/symbol.c src/value.c src/vm.c main.c sample1.c delay.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/src/alloc.o ${OBJECTDIR}/src/class.o ${OBJECTDIR}/src/console.o ${OBJECTDIR}/src/c_array.o ${OBJECTDIR}/src/c_hash.o ${OBJECTDIR}/src/c_math.o ${OBJECTDIR}/src/c_numeric.o ${OBJECTDIR}/src/c_range.o ${OBJECTDIR}/src/c_string.o ${OBJECTDIR}/src/global.o ${OBJECTDIR}/src/keyvalue.o ${OBJECTDIR}/src/load.o ${OBJECTDIR}/src/mrblib.o ${OBJECTDIR}/src/rrt0.o ${OBJECTDIR}/src/static.o ${OBJECTDIR}/src/symbol.o ${OBJECTDIR}/src/value.o ${OBJECTDIR}/src/vm.o ${OBJECTDIR}/main.o ${OBJECTDIR}/sample1.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/mcc_generated_files/uart1.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/src/alloc.o.d ${OBJECTDIR}/src/class.o.d ${OBJECTDIR}/src/console.o.d ${OBJECTDIR}/src/c_array.o.d ${OBJECTDIR}/src/c_hash.o.d ${OBJECTDIR}/src/c_math.o.d ${OBJECTDIR}/src/c_numeric.o.d ${OBJECTDIR}/src/c_range.o.d ${OBJECTDIR}/src/c_string.o.d ${OBJECTDIR}/src/global.o.d ${OBJECTDIR}/src/keyvalue.o.d ${OBJECTDIR}/src/load.o.d ${OBJECTDIR}/src/mrblib.o.d ${OBJECTDIR}/src/rrt0.o.d ${OBJECTDIR}/src/static.o.d ${OBJECTDIR}/src/symbol.o.d ${OBJECTDIR}/src/value.o.d ${OBJECTDIR}/src/vm.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/sample1.o.d ${OBJECTDIR}/delay.o.d ${OBJECTDIR}/mcc_generated_files/uart1.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/uart1.o ${OBJECTDIR}/src/alloc.o ${OBJECTDIR}/src/class.o ${OBJECTDIR}/src/console.o ${OBJECTDIR}/src/c_array.o ${OBJECTDIR}/src/c_hash.o ${OBJECTDIR}/src/c_math.o ${OBJECTDIR}/src/c_numeric.o ${OBJECTDIR}/src/c_range.o ${OBJECTDIR}/src/c_string.o ${OBJECTDIR}/src/global.o ${OBJECTDIR}/src/keyvalue.o ${OBJECTDIR}/src/load.o ${OBJECTDIR}/src/mrblib.o ${OBJECTDIR}/src/rrt0.o ${OBJECTDIR}/src/static.o ${OBJECTDIR}/src/symbol.o ${OBJECTDIR}/src/value.o ${OBJECTDIR}/src/vm.o ${OBJECTDIR}/main.o ${OBJECTDIR}/sample1.o ${OBJECTDIR}/delay.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o.d ${OBJECTDIR}/mcc_generated_files/mcc.o.d ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d ${OBJECTDIR}/mcc_generated_files/uart1.o.d ${OBJECTDIR}/src/alloc.o.d ${OBJECTDIR}/src/class.o.d ${OBJECTDIR}/src/console.o.d ${OBJECTDIR}/src/c_array.o.d ${OBJECTDIR}/src/c_hash.o.d ${OBJECTDIR}/src/c_math.o.d ${OBJECTDIR}/src/c_numeric.o.d ${OBJECTDIR}/src/c_range.o.d ${OBJECTDIR}/src/c_string.o.d ${OBJECTDIR}/src/global.o.d ${OBJECTDIR}/src/keyvalue.o.d ${OBJECTDIR}/src/load.o.d ${OBJECTDIR}/src/mrblib.o.d ${OBJECTDIR}/src/rrt0.o.d ${OBJECTDIR}/src/static.o.d ${OBJECTDIR}/src/symbol.o.d ${OBJECTDIR}/src/value.o.d ${OBJECTDIR}/src/vm.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/sample1.o.d ${OBJECTDIR}/delay.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/src/alloc.o ${OBJECTDIR}/src/class.o ${OBJECTDIR}/src/console.o ${OBJECTDIR}/src/c_array.o ${OBJECTDIR}/src/c_hash.o ${OBJECTDIR}/src/c_math.o ${OBJECTDIR}/src/c_numeric.o ${OBJECTDIR}/src/c_range.o ${OBJECTDIR}/src/c_string.o ${OBJECTDIR}/src/global.o ${OBJECTDIR}/src/keyvalue.o ${OBJECTDIR}/src/load.o ${OBJECTDIR}/src/mrblib.o ${OBJECTDIR}/src/rrt0.o ${OBJECTDIR}/src/static.o ${OBJECTDIR}/src/symbol.o ${OBJECTDIR}/src/value.o ${OBJECTDIR}/src/vm.o ${OBJECTDIR}/main.o ${OBJECTDIR}/sample1.o ${OBJECTDIR}/delay.o ${OBJECTDIR}/mcc_generated_files/uart1.o
+OBJECTFILES=${OBJECTDIR}/mcc_generated_files/interrupt_manager.o ${OBJECTDIR}/mcc_generated_files/mcc.o ${OBJECTDIR}/mcc_generated_files/pin_manager.o ${OBJECTDIR}/mcc_generated_files/uart1.o ${OBJECTDIR}/src/alloc.o ${OBJECTDIR}/src/class.o ${OBJECTDIR}/src/console.o ${OBJECTDIR}/src/c_array.o ${OBJECTDIR}/src/c_hash.o ${OBJECTDIR}/src/c_math.o ${OBJECTDIR}/src/c_numeric.o ${OBJECTDIR}/src/c_range.o ${OBJECTDIR}/src/c_string.o ${OBJECTDIR}/src/global.o ${OBJECTDIR}/src/keyvalue.o ${OBJECTDIR}/src/load.o ${OBJECTDIR}/src/mrblib.o ${OBJECTDIR}/src/rrt0.o ${OBJECTDIR}/src/static.o ${OBJECTDIR}/src/symbol.o ${OBJECTDIR}/src/value.o ${OBJECTDIR}/src/vm.o ${OBJECTDIR}/main.o ${OBJECTDIR}/sample1.o ${OBJECTDIR}/delay.o
 
 # Source Files
-SOURCEFILES=mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c src/alloc.c src/class.c src/console.c src/c_array.c src/c_hash.c src/c_math.c src/c_numeric.c src/c_range.c src/c_string.c src/global.c src/keyvalue.c src/load.c src/mrblib.c src/rrt0.c src/static.c src/symbol.c src/value.c src/vm.c main.c sample1.c delay.c mcc_generated_files/uart1.c
+SOURCEFILES=mcc_generated_files/interrupt_manager.c mcc_generated_files/mcc.c mcc_generated_files/pin_manager.c mcc_generated_files/uart1.c src/alloc.c src/class.c src/console.c src/c_array.c src/c_hash.c src/c_math.c src/c_numeric.c src/c_range.c src/c_string.c src/global.c src/keyvalue.c src/load.c src/mrblib.c src/rrt0.c src/static.c src/symbol.c src/value.c src/vm.c main.c sample1.c delay.c
 
 
 CFLAGS=
@@ -123,6 +123,12 @@ ${OBJECTDIR}/mcc_generated_files/pin_manager.o: mcc_generated_files/pin_manager.
 	@${RM} ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/pin_manager.o 
 	@${FIXDEPS} "${OBJECTDIR}/mcc_generated_files/pin_manager.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"src" -I"src/hal" -MMD -MF "${OBJECTDIR}/mcc_generated_files/pin_manager.o.d" -o ${OBJECTDIR}/mcc_generated_files/pin_manager.o mcc_generated_files/pin_manager.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/mcc_generated_files/uart1.o: mcc_generated_files/uart1.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/uart1.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/uart1.o 
+	@${FIXDEPS} "${OBJECTDIR}/mcc_generated_files/uart1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"src" -I"src/hal" -MMD -MF "${OBJECTDIR}/mcc_generated_files/uart1.o.d" -o ${OBJECTDIR}/mcc_generated_files/uart1.o mcc_generated_files/uart1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/src/alloc.o: src/alloc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
@@ -250,12 +256,6 @@ ${OBJECTDIR}/delay.o: delay.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/delay.o 
 	@${FIXDEPS} "${OBJECTDIR}/delay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"src" -I"src/hal" -MMD -MF "${OBJECTDIR}/delay.o.d" -o ${OBJECTDIR}/delay.o delay.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
-${OBJECTDIR}/mcc_generated_files/uart1.o: mcc_generated_files/uart1.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
-	@${RM} ${OBJECTDIR}/mcc_generated_files/uart1.o.d 
-	@${RM} ${OBJECTDIR}/mcc_generated_files/uart1.o 
-	@${FIXDEPS} "${OBJECTDIR}/mcc_generated_files/uart1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"src" -I"src/hal" -MMD -MF "${OBJECTDIR}/mcc_generated_files/uart1.o.d" -o ${OBJECTDIR}/mcc_generated_files/uart1.o mcc_generated_files/uart1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
 else
 ${OBJECTDIR}/mcc_generated_files/interrupt_manager.o: mcc_generated_files/interrupt_manager.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
@@ -274,6 +274,12 @@ ${OBJECTDIR}/mcc_generated_files/pin_manager.o: mcc_generated_files/pin_manager.
 	@${RM} ${OBJECTDIR}/mcc_generated_files/pin_manager.o.d 
 	@${RM} ${OBJECTDIR}/mcc_generated_files/pin_manager.o 
 	@${FIXDEPS} "${OBJECTDIR}/mcc_generated_files/pin_manager.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"src" -I"src/hal" -MMD -MF "${OBJECTDIR}/mcc_generated_files/pin_manager.o.d" -o ${OBJECTDIR}/mcc_generated_files/pin_manager.o mcc_generated_files/pin_manager.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
+	
+${OBJECTDIR}/mcc_generated_files/uart1.o: mcc_generated_files/uart1.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/uart1.o.d 
+	@${RM} ${OBJECTDIR}/mcc_generated_files/uart1.o 
+	@${FIXDEPS} "${OBJECTDIR}/mcc_generated_files/uart1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"src" -I"src/hal" -MMD -MF "${OBJECTDIR}/mcc_generated_files/uart1.o.d" -o ${OBJECTDIR}/mcc_generated_files/uart1.o mcc_generated_files/uart1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 ${OBJECTDIR}/src/alloc.o: src/alloc.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}/src" 
@@ -400,12 +406,6 @@ ${OBJECTDIR}/delay.o: delay.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/delay.o.d 
 	@${RM} ${OBJECTDIR}/delay.o 
 	@${FIXDEPS} "${OBJECTDIR}/delay.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"src" -I"src/hal" -MMD -MF "${OBJECTDIR}/delay.o.d" -o ${OBJECTDIR}/delay.o delay.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
-	
-${OBJECTDIR}/mcc_generated_files/uart1.o: mcc_generated_files/uart1.c  nbproject/Makefile-${CND_CONF}.mk
-	@${MKDIR} "${OBJECTDIR}/mcc_generated_files" 
-	@${RM} ${OBJECTDIR}/mcc_generated_files/uart1.o.d 
-	@${RM} ${OBJECTDIR}/mcc_generated_files/uart1.o 
-	@${FIXDEPS} "${OBJECTDIR}/mcc_generated_files/uart1.o.d" $(SILENT) -rsi ${MP_CC_DIR}../  -c ${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION) -I"src" -I"src/hal" -MMD -MF "${OBJECTDIR}/mcc_generated_files/uart1.o.d" -o ${OBJECTDIR}/mcc_generated_files/uart1.o mcc_generated_files/uart1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD) 
 	
 endif
 

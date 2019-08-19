@@ -142,8 +142,8 @@ void UART1_Initialize (void)
    U1STA = 0x0;
    // U1TXREG 0; 
    U1TXREG = 0x0;
-   // BaudRate = 19200; Frequency = 1000000 Hz; BRG 12; 
-   U1BRG = 0xC;
+   // BaudRate = 19200; Frequency = 2000000 Hz; BRG 25; 
+   U1BRG = 0x19;
 
    IEC1bits.U1RXIE = 1;
 
