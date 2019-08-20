@@ -38,6 +38,20 @@ static void u_puts(char *mo, int size){
     }
 }
 
+int u_read(char *addr){
+    int i = 0;
+    while (1) {
+        if ( UART1_ReceiveBufferIsEmpty() == false ) { 
+            addr[i] = UART1_Read();
+            if(addr[i] == '\n'){
+                break;
+            }
+            i++;
+        }
+    }
+    return i;
+}
+
 static void uart_read(mrb_vm *vm, mrb_value *v, int argc) {
     u_puts("\n>",0);
     int i = 0;
@@ -100,42 +114,28 @@ int hal_flush(int fd) {
 
 void add_code(void){
     char txt[255];
-    int i = 0;
-    while (1) {
-        if ( UART1_ReceiveBufferIsEmpty() == false ) { 
-            txt[i] = UART1_Read();
-            if(txt[i] == '\n'){
-                break;
-            }
-            i++;
-        }
-    }
+    char *txt_addr;
+    int txt_len;
+    txt_addr = txt;
+    // [crlf] read waite
+    txt_len = u_read(txt_addr);
     u_puts("+OK mruby/c\r\n",0);
     memset(txt, 0, sizeof(txt));
-    i = 0;
-    while (1) {
-        if ( UART1_ReceiveBufferIsEmpty() == false ) { 
-            txt[i] = UART1_Read();
-            if(txt[i] == '\n'){
-                break;
-            }
-            i++;
-        }
-    }
-    /*char a[1];
-    a[0] = 0x30 + i;
-    u_puts(a,0);*/
+    
+    // bytecode length receive
+    txt_len = u_read(txt_addr);
     u_puts("+OK Write bytecode\r\n",0);
     int size = 0;
-    i = i-2;
+    txt_len = txt_len-2;
     int j = 0;
-    while(i>5){
-        size = (txt[i] - 0x30) * pow(10,j) + size;
+    while(txt_len>5){
+        size = (txt[txt_len] - 0x30) * pow(10,j) + size;
         j++;
-        i--;
+        txt_len--;
     }
-    //UART1_Write(size);
-    i = 0;
+    
+    // mruby/c code write
+    int i = 0;
     memset(sample, 0, sizeof(sample));
     while (size > 0) {
         if ( UART1_ReceiveBufferIsEmpty() == false ) { 
@@ -145,33 +145,10 @@ void add_code(void){
             i++;
         }
     }
-    /*
-    u_puts("+OK mruby/c\r\n");
-    if( strcmp(text, "write") == 0 ) {
-        text = strtok( NULL, '\t' );
-        if( text != NULL ) {
-            int size = atoi(text);
-            u_puts("+OK Write bytecode\r\n");
-            while (byte > 0) {
-                if ( UART1_ReceiveBufferIsEmpty() == false ) {
-                    UART1_Read();
-                    byte--;
-                }
-            }
-        }
-    }*/
+    // write success => execut
     u_puts("+DONE\r\n",0);
     memset(txt, 0, sizeof(txt));
-    i = 0;
-    while (1) {
-        if ( UART1_ReceiveBufferIsEmpty() == false ) { 
-            txt[i] = UART1_Read();
-            if(txt[i] == '\n'){
-                break;
-            }
-            i++;
-        }
-    }
+    txt_len = u_read(txt_addr);
     u_puts("+OK\r\n",0);
 }
 
