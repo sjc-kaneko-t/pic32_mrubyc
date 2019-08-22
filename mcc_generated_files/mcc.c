@@ -99,6 +99,7 @@ void SYSTEM_Initialize(void)
 {
     PIN_MANAGER_Initialize();
     OSCILLATOR_Initialize();
+    NVM_Initialize();
     UART1_Initialize();
     INTERRUPT_Initialize();
 

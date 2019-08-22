@@ -49,8 +49,9 @@
 #include "pin_manager.h"
 #include <stdint.h>
 #include <stdbool.h>
-#include "interrupt_manager.h"
 #include "uart1.h"
+#include "interrupt_manager.h"
+#include "nvm.h"
 
 #define _XTAL_FREQ  8000000UL
 

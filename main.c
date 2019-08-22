@@ -152,7 +152,7 @@ void add_code(void){
     u_puts("+DONE\r\n",0);
     memset(txt, 0, sizeof(txt));
     txt_len = u_read(txt_addr);
-    u_puts("+OK\r\n",0);
+    u_puts("+OK Execute mruby/c.\r\n",0);
 }
 
 int main(void)

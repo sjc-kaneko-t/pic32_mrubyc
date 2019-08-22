@@ -53,6 +53,11 @@
 */
 void INTERRUPT_Initialize (void)
 {    
+    //    FCEI: Flash Control Event
+    //    Priority: 1
+    //    SubPriority: 0
+        IPC6bits.FCEIP = 1;
+        IPC6bits.FCEIS = 0;
     //    UERI: UART1 Error
     //    Priority: 1
     //    SubPriority: 0
