@@ -121,6 +121,9 @@ void add_code(void){
     txt_len = u_read(txt_addr);
     u_puts("+OK mruby/c\r\n",0);
     memset(txt, 0, sizeof(txt));
+    txt_len = u_read(txt_addr);
+    u_puts("+OK mruby/c PSoC_5LP v1.00 (2018/09/04)\r\n",0);
+    memset(txt, 0, sizeof(txt));
     
     // bytecode length receive
     txt_len = u_read(txt_addr);

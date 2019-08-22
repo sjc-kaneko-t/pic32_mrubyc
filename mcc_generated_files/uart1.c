@@ -105,8 +105,8 @@ static UART_OBJECT uart1_obj ;
 
 */
 
-#define UART1_CONFIG_TX_BYTEQ_LENGTH 8
-#define UART1_CONFIG_RX_BYTEQ_LENGTH 8
+#define UART1_CONFIG_TX_BYTEQ_LENGTH 255
+#define UART1_CONFIG_RX_BYTEQ_LENGTH 255
 
 
 /** UART Driver Queue
@@ -136,8 +136,8 @@ static uint8_t uart1_rxByteQ[UART1_CONFIG_RX_BYTEQ_LENGTH] ;
 
 void UART1_Initialize (void)
 {
-   // STSEL 1S; IREN disabled; PDSEL 8N; RTSMD disabled; RXINV disabled; SIDL disabled; WAKE disabled; ABAUD disabled; LPBACK disabled; BRGH enabled; UEN TX_RX; ON enabled; 
-   U1MODE = 0x8008;
+   // STSEL 1S; IREN disabled; PDSEL 8N; RTSMD enabled; RXINV disabled; SIDL disabled; WAKE disabled; ABAUD disabled; LPBACK disabled; BRGH enabled; UEN TX_RX; ON enabled; 
+   U1MODE = 0x8808;
    // UTXISEL TX_ONE_CHAR; UTXINV disabled; ADDR 0; URXEN disabled; OERR disabled; ADM_EN disabled; URXISEL RX_ONE_CHAR; UTXBRK disabled; UTXEN disabled; ADDEN disabled; 
    U1STA = 0x0;
    // U1TXREG 0; 
