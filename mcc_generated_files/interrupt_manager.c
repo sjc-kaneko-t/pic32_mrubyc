@@ -58,6 +58,11 @@ void INTERRUPT_Initialize (void)
     //    SubPriority: 0
         IPC6bits.FCEIP = 1;
         IPC6bits.FCEIS = 0;
+    //    I2CMI: I2C1 Master Event
+    //    Priority: 1
+    //    SubPriority: 0
+        IPC8bits.I2C1IP = 1;
+        IPC8bits.I2C1IS = 0;
     //    UERI: UART1 Error
     //    Priority: 1
     //    SubPriority: 0

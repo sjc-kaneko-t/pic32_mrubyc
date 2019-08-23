@@ -49,9 +49,11 @@
 #include "pin_manager.h"
 #include <stdint.h>
 #include <stdbool.h>
-#include "uart1.h"
-#include "interrupt_manager.h"
+#include "adc1.h"
 #include "nvm.h"
+#include "interrupt_manager.h"
+#include "uart1.h"
+#include "i2c1.h"
 
 #define _XTAL_FREQ  8000000UL
 

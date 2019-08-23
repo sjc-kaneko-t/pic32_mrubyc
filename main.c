@@ -52,47 +52,33 @@ int u_read(char *addr){
     return i;
 }
 
-static void uart_read(mrb_vm *vm, mrb_value *v, int argc) {
-    u_puts("\n>",0);
-    int i = 0;
-    char *txt;
-    while (1) {
-        if ( UART1_ReceiveBufferIsEmpty() == false ) {
-            char word = UART1_Read();
-            if(word == '\n'){
-                break;
-            }
-            txt[i] = word;
-            i++;
-        }
-    }
-    u_puts(txt,0);
-    u_puts("\n",0);
-    mrb_value moji;
-    moji = mrbc_string_new_cstr(vm, txt);
-    SET_RETURN(moji);
-}
-
 /* Digital IO mesods */
-static void c_rb6(mrb_vm *vm, mrb_value *v, int argc) {
-    SET_INT_RETURN(PORTBbits.RB6);
+static void c_btn(mrb_vm *vm, mrb_value *v, int argc) {
+    SET_INT_RETURN(PORTBbits.RB7);
 }
-static void c_rb5(mrb_vm *vm, mrb_value *v, int argc) {
+static void c_leds(mrb_vm *vm, mrb_value *v, int argc) {
     int set_value = GET_INT_ARG(1);
-    PORTBbits.RB5 = set_value;
-}
-static void c_rb4(mrb_vm *vm, mrb_value *v, int argc) {
-    int set_value = GET_INT_ARG(1);
-    PORTBbits.RB4 = set_value;
-}
-static void c_ra4(mrb_vm *vm, mrb_value *v, int argc) {
-    int set_value = GET_INT_ARG(1);
-    PORTAbits.RA4 = set_value;
+    PORTB = set_value<<10;
 }
 
 static void c_puts(mrb_vm *vm, mrb_value *v, int argc) {
     char *mo = mrbc_string_cstr(&v[1]);
     u_puts(mo,0);
+}
+
+/* ADC for mruby/c */
+
+static void c_adc_get(mrb_vm *vm, mrb_value *v, int argc) {
+    AD1CHS = 0x90000;
+    ADC1_Start();
+    SET_FLOAT_RETURN(3.3*ADC1_ConversionResultGet()/1023);
+    ADC1_Stop();
+}
+static void c_adc_get2(mrb_vm *vm, mrb_value *v, int argc) {
+    AD1CHS = 0xA0000;
+    ADC1_Start();
+    SET_FLOAT_RETURN(3.3*ADC1_ConversionResultGet()/1023);
+    ADC1_Stop();
 }
 
 
@@ -155,24 +141,27 @@ void add_code(void){
     u_puts("+OK Execute mruby/c.\r\n",0);
 }
 
+/* main program */
+
 int main(void)
 {
     // initialize the device
     SYSTEM_Initialize();
-    TRISBbits.TRISB5 = 0;
-    TRISBbits.TRISB4 = 0;
-    TRISBbits.TRISB6 = 1;
-    TRISAbits.TRISA4 = 0;
+    TRISBbits.TRISB7 = 1;
+    TRISBbits.TRISB10 = 0;
+    TRISBbits.TRISB11 = 0;
+    TRISBbits.TRISB12 = 0;
+    TRISBbits.TRISB13 = 0;
+    ADC1_Initialize();
     add_code();
     
 
     mrbc_init(memory_pool, MEMORY_SIZE);
-    mrbc_define_method(0, mrbc_class_object, "rb5", c_rb5);
-    mrbc_define_method(0, mrbc_class_object, "rb6", c_rb6);
-    mrbc_define_method(0, mrbc_class_object, "rb4", c_rb4);
-    mrbc_define_method(0, mrbc_class_object, "ra4", c_ra4);
-    mrbc_define_method(0, mrbc_class_object, "pri", c_puts);
-    mrbc_define_method(0, mrbc_class_object, "ur", uart_read);
+    mrbc_define_method(0, mrbc_class_object, "leds_write", c_leds);
+    mrbc_define_method(0, mrbc_class_object, "SW", c_btn);
+    mrbc_define_method(0, mrbc_class_object, "adc", c_adc_get);
+    mrbc_define_method(0, mrbc_class_object, "adc2", c_adc_get2);
+    mrbc_define_method(0, mrbc_class_object, "UART_puts", c_puts);
     mrbc_create_task(sample, 0);
     mrbc_run();
     return 1;
