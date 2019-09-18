@@ -10,6 +10,7 @@ extern const uint8_t sample1[];
 #define MEMORY_SIZE (1024*20)
 static uint8_t memory_pool[MEMORY_SIZE];
 
+
 uint8_t sample[255] = {
 0x52,0x49,0x54,0x45,0x30,0x30,0x30,0x34,0x9d,0x71,0x00,0x00,0x00,0x92,0x4d,0x41,
 0x54,0x5a,0x30,0x30,0x30,0x30,0x49,0x52,0x45,0x50,0x00,0x00,0x00,0x74,0x30,0x30,
@@ -96,6 +97,28 @@ int hal_flush(int fd) {
     return 0;
 }
 
+#define FLASH_SAVE_ADDR (0xBD000000)
+#define PAGE_SIZE (512)
+static uint8_t flashBuffer[PAGE_SIZE / sizeof(uint8_t)]
+
+static uint8_t loadFlush() {
+    memset(flashBuffer, 0, sizeof(flashBuffer));
+    NVM_WriteRow((void* )flashBuffer, (void *)FLASH_SAVE_ADDR);
+    return flashBuffer[0];
+}
+
+static int saveFlush(const uint8_t* writeData, uint16_t size) {
+    if(size > sizeof(flashBuffer)) {
+        return -1;
+    }
+
+    memset(flashBuffer, 0, sizeof(flashBuffer));
+    memcpy(flashBuffer, writeData, size);
+
+    NVM_ErasePage((void *)FLASH_SAVE_ADDR);
+    NVM_WriteRow((void *)FLASH_SAVE_ADDR, (void *)flashBuffer);
+}
+
 /* mruby/c writer */
 
 void add_code(void){
@@ -134,6 +157,7 @@ void add_code(void){
             i++;
         }
     }
+    
     // write success => execut
     u_puts("+DONE\r\n",0);
     memset(txt, 0, sizeof(txt));
