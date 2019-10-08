@@ -10,6 +10,7 @@ extern const uint8_t sample1[];
 #define MEMORY_SIZE (1024*20)
 static uint8_t memory_pool[MEMORY_SIZE];
 
+
 uint8_t sample[255] = {
 0x52,0x49,0x54,0x45,0x30,0x30,0x30,0x34,0x9d,0x71,0x00,0x00,0x00,0x92,0x4d,0x41,
 0x54,0x5a,0x30,0x30,0x30,0x30,0x49,0x52,0x45,0x50,0x00,0x00,0x00,0x74,0x30,0x30,
@@ -47,6 +48,8 @@ int u_read(char *addr){
                 break;
             }
             i++;
+        } else {
+            break;
         }
     }
     return i;
@@ -96,6 +99,42 @@ int hal_flush(int fd) {
     return 0;
 }
 
+#define FLASH_SAVE_ADDR (0xBD008000)
+#define PAGE_SIZE (1028)
+#define ROW_SIZE (PAGE_SIZE / sizeof(uint8_t) / 4)
+#define MAX_SIZE (1028 * 2)
+
+static uint8_t flashBuffer[MAX_SIZE];
+
+static uint8_t loadFlush() {
+    memset(flashBuffer, 0, sizeof(flashBuffer));
+    //NVM_WriteRow((void *)flashBuffer, (void *)FLASH_SAVE_ADDR);
+    memcpy((void* )flashBuffer, (void *)FLASH_SAVE_ADDR, sizeof(flashBuffer));
+    return flashBuffer[0];
+}
+
+static int saveFlush(const uint8_t* writeData, uint16_t size) {
+    if(size > sizeof(flashBuffer)) {
+        return -1;
+    }
+
+    memset(flashBuffer, 0, sizeof(flashBuffer));
+    memcpy(flashBuffer, writeData, size);
+
+   int pageCount = (size % PAGE_SIZE == 0) ? size / PAGE_SIZE : size / PAGE_SIZE + 1;
+   
+   int i = 0;
+    for(i = 0;i < pageCount;i++) {
+        NVM_ErasePage((void *)(FLASH_SAVE_ADDR + i * PAGE_SIZE));
+    }
+   
+   int rowCount = (size % ROW_SIZE == 0) ? size / ROW_SIZE : size / ROW_SIZE + 1;
+   for(i = 0;i < rowCount; i++) {
+        NVM_WriteRow((void *)(FLASH_SAVE_ADDR + i * ROW_SIZE), (void *)flashBuffer[i * ROW_SIZE]);
+   }
+   
+}
+
 /* mruby/c writer */
 
 void add_code(void){
@@ -134,6 +173,7 @@ void add_code(void){
             i++;
         }
     }
+    
     // write success => execut
     u_puts("+DONE\r\n",0);
     memset(txt, 0, sizeof(txt));
@@ -153,9 +193,10 @@ int main(void)
     TRISBbits.TRISB12 = 0;
     TRISBbits.TRISB13 = 0;
     ADC1_Initialize();
-    add_code();
     
-
+    saveFlush(sample, sizeof(sample));
+    loadFlush();
+        
     mrbc_init(memory_pool, MEMORY_SIZE);
     mrbc_define_method(0, mrbc_class_object, "leds_write", c_leds);
     mrbc_define_method(0, mrbc_class_object, "SW", c_btn);
