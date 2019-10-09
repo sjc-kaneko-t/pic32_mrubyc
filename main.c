@@ -100,15 +100,18 @@ int hal_flush(int fd) {
 }
 
 #define FLASH_SAVE_ADDR (0xBD008000)
+// 1??????? pic32????????????
 #define PAGE_SIZE (1028)
-#define ROW_SIZE (PAGE_SIZE / sizeof(uint8_t) / 4)
+// NVM_WriteRow????????????
+// 1???=8?,1?=NVM_WriteRow?????????
+#define ROW_SIZE (PAGE_SIZE / sizeof(uint8_t) / 8)
+// saveFlush????????? ????
 #define MAX_SIZE (1028 * 2)
 
 static uint8_t flashBuffer[MAX_SIZE];
 
 static uint8_t loadFlush() {
     memset(flashBuffer, 0, sizeof(flashBuffer));
-    //NVM_WriteRow((void *)flashBuffer, (void *)FLASH_SAVE_ADDR);
     memcpy((void* )flashBuffer, (void *)FLASH_SAVE_ADDR, sizeof(flashBuffer));
     return flashBuffer[0];
 }
@@ -130,7 +133,7 @@ static int saveFlush(const uint8_t* writeData, uint16_t size) {
    
    int rowCount = (size % ROW_SIZE == 0) ? size / ROW_SIZE : size / ROW_SIZE + 1;
    for(i = 0;i < rowCount; i++) {
-        NVM_WriteRow((void *)(FLASH_SAVE_ADDR + i * ROW_SIZE), (void *)flashBuffer[i * ROW_SIZE]);
+        NVM_WriteRow((void *)(FLASH_SAVE_ADDR + i * ROW_SIZE), (void *)&flashBuffer[i * ROW_SIZE]);
    }
    
 }
@@ -195,7 +198,7 @@ int main(void)
     ADC1_Initialize();
     
     saveFlush(sample, sizeof(sample));
-    loadFlush();
+    //loadFlush();
         
     mrbc_init(memory_pool, MEMORY_SIZE);
     mrbc_define_method(0, mrbc_class_object, "leds_write", c_leds);
