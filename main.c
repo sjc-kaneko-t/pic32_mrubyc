@@ -100,12 +100,12 @@ int hal_flush(int fd) {
 }
 
 #define FLASH_SAVE_ADDR (0xBD008000)
-// 1??????? pic32????????????
+// 1page size change by pic32 model
 #define PAGE_SIZE (1028)
-// NVM_WriteRow????????????
-// 1???=8?,1?=NVM_WriteRow?????????
+// NVM_WriteRow max size
+// 1Page=8Column,1Column=NVM_WriteRow max size
 #define ROW_SIZE (PAGE_SIZE / sizeof(uint8_t) / 8)
-// saveFlush????????? ????
+// saveFlush max size change as appropriate
 #define MAX_SIZE (1028 * 2)
 
 static uint8_t flashBuffer[MAX_SIZE];
@@ -198,7 +198,7 @@ int main(void)
     ADC1_Initialize();
     
     saveFlush(sample, sizeof(sample));
-    //loadFlush();
+    loadFlush();
         
     mrbc_init(memory_pool, MEMORY_SIZE);
     mrbc_define_method(0, mrbc_class_object, "leds_write", c_leds);
